@@ -1,3 +1,4 @@
+from datetime import datetime
 import argparse
 import os
 import webbrowser
@@ -10,6 +11,12 @@ URLS = [
     "https://www.twitch.tv/"
     ]
 
+
+def get_date():
+    """Returns currcnt date in M/D/YYYY"""
+    now = datetime.now()
+    date = now.strftime(f"%m/%d/%Y")
+    return date
 
 
 def open_tools():
@@ -50,11 +57,16 @@ def main():
     )
     args = parser.parse_args()
 
+    date = get_date()
+
+    stream_title = f'{date} - "{args.sermon}" - ({args.time} Service)'
+    print(f"INFO: The stream title will be {stream_title}")
+
     # Open browser to URLs and nginx
-    open_tools()
+    # open_tools()
 
     # Check certain processes
-    check_processes("notepad.exe")
+    # check_processes("notepad.exe")
 
 
 
