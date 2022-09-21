@@ -1,5 +1,6 @@
 import argparse
 import os
+import psutil
 import webbrowser
 import wmi
 
@@ -11,7 +12,6 @@ URLS = [
     ]
 
 
-
 def open_tools():
     os.startfile("\\Users\\Ken\\Desktop\\church-example\\nginx-sample.txt")
     os.startfile("\\Users\\Ken\\Desktop\\church-example\\atom")
@@ -20,12 +20,14 @@ def open_tools():
 
 
 def check_processes(process):
-    c = wmi.WMI()
-    for p in c.Win32_Process():
-        if process == p.Name:
-            print(f"{process} is running.")
-        else:
-            print(f"{process} is not running.")
+    process_count = 0
+    for p in psutil.process_iter():
+        if process in p.name():
+            process_count += 1
+    if process_count >= 3:
+        print("Processes are running normal.")
+    else:
+        print(f"Check process {process}. ")
 
 
 
@@ -50,13 +52,11 @@ def main():
     )
     args = parser.parse_args()
 
-    # Open browser to URLs and nginx
+    # Open browser to URLs, OBS, and nginx (Atom for now)
     open_tools()
 
     # Check certain processes
-    check_processes("notepad.exe")
-
-
+    check_processes("atom")
 
 
 if __name__ == "__main__":
