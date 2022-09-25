@@ -53,13 +53,13 @@ def main():
     )
     args = parser.parse_args()
 
-<<<<<<< HEAD
+
     # Open browser to URLs, OBS, and nginx (Atom for now)
     open_tools()
 
     # Check certain processes
     check_processes("atom")
-=======
+
     date = get_date()
 
     stream_title = f'{date} - "{args.sermon}" - ({args.time} Service)'
@@ -71,8 +71,6 @@ def main():
     # Check certain processes
     # check_processes("notepad.exe")
 
-
->>>>>>> 6c8f7462e25d094cbeffcf0a75c60b28504f093b
 
 
 if __name__ == "__main__":
