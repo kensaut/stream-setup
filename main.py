@@ -2,7 +2,7 @@ from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-# from webdriver.manager.chrome import ChromeDriverManager
+from webdriver_manager.chrome import ChromeDriverManager
 import argparse
 import os
 import psutil
@@ -66,7 +66,7 @@ def main():
 
 
     # Open browser to URLs, OBS, and nginx (Atom for now)
-    # open_tools()
+    open_tools()
 
     # Check certain processes
     check_processes("atom")
@@ -75,9 +75,6 @@ def main():
 
     stream_title = f'{date} - "{args.sermon}" - ({args.time} Service)'
     # print(f"INFO: The stream title will be {stream_title}")
-
-    # Open browser to URLs and nginx
-    open_tools()
 
 
 if __name__ == "__main__":
