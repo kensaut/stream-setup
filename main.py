@@ -1,4 +1,8 @@
 from datetime import datetime
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+# from webdriver.manager.chrome import ChromeDriverManager
 import argparse
 import os
 import psutil
@@ -14,10 +18,11 @@ URLS = [
 
 
 def open_tools():
-    os.startfile("\\Users\\Ken\\Desktop\\church-example\\nginx-sample.txt")
-    os.startfile("\\Users\\Ken\\Desktop\\church-example\\atom")
-    for url in URLS:
-        webbrowser.open_new_tab(url)
+    # os.startfile("\\Users\\Ken\\Desktop\\church-example\\nginx-sample.txt")
+    # os.startfile("\\Program Files\\obs-studio\\bin\\64bit\\obs64.exe")
+    os.startfile("\\Users\\Public\\Desktop\\OBS Studio")
+    # for url in URLS:
+    #     webbrowser.open_new_tab(url)
 
 
 def check_processes(process):
@@ -30,6 +35,12 @@ def check_processes(process):
     else:
         print(f"Check process {process}. ")
 
+
+def get_date():
+    today = datetime.today()
+    formatted_date = today.strftime("%m/%d/%Y")
+    # print(f"INFO: Today's result: {formatted_date}")
+    return formatted_date
 
 
 # Main function to run program
@@ -55,7 +66,7 @@ def main():
 
 
     # Open browser to URLs, OBS, and nginx (Atom for now)
-    open_tools()
+    # open_tools()
 
     # Check certain processes
     check_processes("atom")
@@ -63,14 +74,10 @@ def main():
     date = get_date()
 
     stream_title = f'{date} - "{args.sermon}" - ({args.time} Service)'
-    print(f"INFO: The stream title will be {stream_title}")
+    # print(f"INFO: The stream title will be {stream_title}")
 
     # Open browser to URLs and nginx
-    # open_tools()
-
-    # Check certain processes
-    # check_processes("notepad.exe")
-
+    open_tools()
 
 
 if __name__ == "__main__":
