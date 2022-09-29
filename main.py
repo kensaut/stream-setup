@@ -62,15 +62,15 @@ def open_sites(chrome=True):
     else:
         driver = webdriver.Firefox()
         driver.get(URLS[0])
-        email = driver.find_element(by=By.NAME, value="identifier")
-        email.send_keys("sauk42@gmail.com")
-        submit_button = driver.find_element(by=By.XPATH, value="/html/body/div[1]/div[1]/div[2]/div/c-wiz/div/div[2]/div/div[2]/div/div[1]/div/div/button/span")
-        submit_button.click()
-        password = driver.find_element(by=By.XPATH, value="/html/body/div[1]/div[1]/div[2]/div/c-wiz/div/div[2]/div/div[1]/div/form/span/div[1]/div[1]/div/div/div/div/div[1]/div/div[1]/input")
-        password_input = input("Password: ")
-        password.send_keys(password_input)
-        submit_button = driver.find_element(by=By.XPATH, value="/html/body/div[1]/div[1]/div[2]/div/c-wiz/div/div[2]/div/div[2]/div/div[1]/div/div/button/span")
-        submit_button.click()
+        # email = driver.find_element(by=By.NAME, value="identifier")
+        # email.send_keys("sauk42@gmail.com")
+        # submit_button = driver.find_element(by=By.XPATH, value="/html/body/div[1]/div[1]/div[2]/div/c-wiz/div/div[2]/div/div[2]/div/div[1]/div/div/button/span")
+        # submit_button.click()
+        # password = driver.find_element(by=By.XPATH, value="/html/body/div[1]/div[1]/div[2]/div/c-wiz/div/div[2]/div/div[1]/div/form/span/div[1]/div[1]/div/div/div/div/div[1]/div/div[1]/input")
+        # password_input = input("Password: ")
+        # password.send_keys(password_input)
+        # submit_button = driver.find_element(by=By.XPATH, value="/html/body/div[1]/div[1]/div[2]/div/c-wiz/div/div[2]/div/div[2]/div/div[1]/div/div/button/span")
+        # submit_button.click()
         driver.quit()
 
 # Main function to run program
@@ -106,8 +106,12 @@ def main():
     stream_title = f'{date} - "{args.sermon}" - ({args.time} Service)'
     print(f"INFO: The stream title will be {stream_title}")
 
+    with open("/python/church/chat-links/links.txt", mode="r") as links:
+        for l in links.readlines():
+            print(l)
+
     # Opens sites and manipulates sites
-    open_sites(chrome=False)
+    # open_sites(chrome=False)
 
 
 if __name__ == "__main__":
